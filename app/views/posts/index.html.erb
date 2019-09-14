@@ -1,0 +1,117 @@
+<div class="row">
+  <div class="col-md-8">
+    <h2 class="page-header">Posts</h2>
+      <section class="comment-list">
+        <% if @posts.any? %>
+          <% @posts.each do |post| %>
+            <!-- First Post -->
+            <article class="row">
+              <div class="col-md-2 col-sm-2 hidden-xs">
+                <figure class="thumbnail">
+                  <img class="img-responsive" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" />
+                </figure>
+              </div>
+              <div class="col-md-10 col-sm-10">
+                <div class="panel panel-default arrow left">
+                  <div class="panel-body">
+                    <header class="text-left">
+                      <div class="comment-user"><i class="fa fa-user"></i> <%= post.user.email %></div>
+                      <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> <%= post.created_at.to_date %></time>
+                    </header>
+                    <div class="comment-post">
+                      <p>
+                        <strong><%= post.title %></strong>
+                      </p>
+                      <p>
+                        <%= post.description %>
+                      </p>
+                    </div>
+                    <p class="text-right">
+                      <% if post.user_id == current_user.id %>
+                        <%= link_to post_path(post), method: "delete", data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-sm" do %><i class="fa fa-trash"></i>  <% end %>
+                      <% end %>
+                        <a href="/posts/<%= post.id %>" class="btn btn-default btn-sm"><i class="fa fa-table"></i> </a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <!-- Postg Comment -->
+            <% post.comments.each do |comment| %>
+              <article class="row">
+                <div class="col-md-2 col-sm-2 col-md-offset-1 col-sm-offset-0 hidden-xs">
+                  <figure class="thumbnail">
+                    <img class="img-responsive" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" />
+                  </figure>
+                </div>
+                <div class="col-md-9 col-sm-9">
+                  <div class="panel panel-default arrow left">
+                    <div class="panel-heading right">Comment</div>
+                    <div class="panel-body">
+                      <header class="text-left">
+                        <div class="comment-user"><i class="fa fa-user"></i> <%= comment.user.email %></div>
+                        <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> <%= comment.created_at.to_date %></time>
+                      </header>
+                      <div class="comment-post">
+                        <p>
+                          <%= comment.content %>
+                        </p>
+                      </div>
+                      <p class="text-right">
+                        <% if comment.user_id == current_user.id %>
+                          <%= link_to post_comment_path(post, comment), method: "delete", data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-sm" do %><i class="fa fa-trash"></i>  <% end %>
+                        <% end %>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            <% end %>
+            <%= form_for post.comments.new, url: post_comments_path(post) do |comment| %>
+              <article class="row">
+                <div class="col-md-2 col-sm-2 col-md-offset-1 col-sm-offset-0 hidden-xs">
+                  <figure class="thumbnail">
+                    <img class="img-responsive" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" />
+                  </figure>
+                </div>
+                <div class="col-md-9 col-sm-9">
+                  <div class="panel panel-default arrow left">
+                    <div class="panel-heading right">New Comment</div>
+                    <div class="panel-body">
+                      <header class="text-left">
+                      </header>
+                      <div class="comment-post">
+                        <p>
+                          <%= comment.text_area :content, cols: "50", rows: "4" %>
+                        </p>
+                      </div>
+                      <p class="text-right">
+                        <button type="submit" class="btn btn-default btn-sm fa">
+                          <i class=" fa fa-reply"></i> Comment
+                        </button>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            <% end %>
+          <% end %>
+        <% else %>
+          <article class="row">
+            </div>
+            <div class="col-md-10 col-sm-10">
+              <div class="panel panel-default arrow left">
+                <div class="panel-body">
+                  <div class="comment-post">
+                    <p>
+                      <i>No Posts Available...</i>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        <% end %>
+      </section>
+  </div>
+</div>
