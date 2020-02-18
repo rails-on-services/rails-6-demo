@@ -32,8 +32,9 @@ development:
 
   primary_replica:
     <<: *default
-    database: test_app_development_replica
+    database: test_app_development
     gssencmode: disable
+    port: 5433
     replica: true
 
   # The specified database role being used to connect to postgres.
