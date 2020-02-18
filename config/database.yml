@@ -28,10 +28,12 @@ development:
   primary:
     <<: *default
     database: test_app_development
+    gssencmode: disable
 
   primary_replica:
     <<: *default
     database: test_app_development_replica
+    gssencmode: disable
     replica: true
 
   # The specified database role being used to connect to postgres.
