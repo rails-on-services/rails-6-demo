@@ -255,7 +255,7 @@ DEPENDENCIES
   pg (>= 0.18, < 2.0)
   puma (~> 3.11)
   rails (~> 6.0.2.1)
-  ros-apartment (~> 2.3)!
+  ros-apartment!
   sass-rails (~> 5)
   selenium-webdriver
   spring
