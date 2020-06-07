@@ -24,8 +24,8 @@ Apartment.configure do |config|
   # - an array of strings representing each Tenant name.
   # - a hash which keys are tenant names, and values custom db config (must contain all key/values required in database.yml)
   #
-  config.tenant_names = lambda{ Tenant.pluck(:tenant_name) }
-  # config.tenant_names = ['tenant1', 'tenant2']
+  # config.tenant_names = lambda{ Tenant.pluck(:tenant_name) }
+  config.tenant_names = ['tenant1', 'tenant2', 'dev']
   # config.tenant_names = {
   #   'tenant1' => {
   #     adapter: 'postgresql',
@@ -57,7 +57,8 @@ Apartment.configure do |config|
   #
   # The default behaviour is true.
   #
-  # config.use_schemas = true
+  config.use_schemas = true
+  config.default_schema = "dev"
 
   #
   # ==> PostgreSQL only options
@@ -73,7 +74,7 @@ Apartment.configure do |config|
   # e.g when using a PostgreSQL extension like hstore.
   # Any schemas added here will be available along with your selected Tenant.
   #
-  # config.persistent_schemas = %w{ hstore }
+  config.persistent_schemas = %w{ shared_extensions }
 
   # <== PostgreSQL only options
   #
