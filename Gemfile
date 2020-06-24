@@ -59,3 +59,5 @@ gem 'devise'
 gem "twitter-bootstrap-rails"
 gem 'jquery-rails'
 gem "letter_opener", :group => :development
+
+gem 'pry-rails'
