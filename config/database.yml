@@ -23,6 +23,7 @@ default: &default
   username: dev
   password: dev
   host: localhost
+  schema_search_path: "public,shared_extensions"
 
 development:
   primary:
