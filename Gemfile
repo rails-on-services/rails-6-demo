@@ -11,7 +11,8 @@ gem 'mysql2'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 
-gem 'ros-apartment', require: 'apartment', path: '/Users/rpbaltazar/code/ros-apartment'
+# gem 'ros-apartment', require: 'apartment', path: '/Users/perx/dev/ros-apartment'
+gem 'ros-apartment', require: 'apartment'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
